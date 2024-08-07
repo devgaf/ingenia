@@ -1,2 +1,2 @@
 # ingenia
-Challenge for Ingenia by Galicia
+Challenge for Ingenia

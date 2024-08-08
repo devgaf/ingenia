@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-import org.springframework.http.HttpStatus;
-
 import com.ingenia.challenge.model.ShortestPathResult;
 import com.ingenia.challenge.services.PathService;
 
@@ -20,9 +18,9 @@ public class PathController {
     }
 
     @PutMapping("/{pathId}")
-    public ResponseEntity<Void> addPath(@PathVariable Long pathId, @RequestBody Map<String, Object> body) {
+    public ResponseEntity<Map<String, String>> addPath(@PathVariable Long pathId, @RequestBody Map<String, Object> body) {
         pathService.addPath(pathId, ((Number) body.get("source_id")).longValue(), ((Number) body.get("destination_id")).longValue(), ((Number) body.get("cost")).doubleValue());
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.ok(Map.of("status", "ok"));
     }
 
     @GetMapping("/{sourceId}/{destinationId}")

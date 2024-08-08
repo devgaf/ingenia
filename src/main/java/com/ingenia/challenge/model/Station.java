@@ -1,17 +1,15 @@
 package com.ingenia.challenge.model;
 
 import lombok.Data;
-import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
-@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Station {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(unique = true, nullable = false)
 	private String name;
 
 	public Station(String name) {

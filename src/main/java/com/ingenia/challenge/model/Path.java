@@ -7,20 +7,26 @@ import jakarta.persistence.*;
 @Entity
 
 public class Path {
-	
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
 
-	    @Column(nullable = false)
-	    private Double cost;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	    @ManyToOne(fetch = FetchType.LAZY)
-	    @JoinColumn(name = "source_id", nullable = false)
-	    private Station sourceStation;
+	@Column(nullable = false)
+	private Double cost;
 
-	    @ManyToOne(fetch = FetchType.LAZY)
-	    @JoinColumn(name = "destination_id", nullable = false)
-	    private Station destinationStation;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "source_id", nullable = false)
+	private Station sourceStation;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "destination_id", nullable = false)
+	private Station destinationStation;
+
+	public Path(Station source, Station destination, double cost) {
+		this.sourceStation = source;
+		this.destinationStation = destination;
+		this.cost = cost;
+	}
 
 }
